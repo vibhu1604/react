@@ -5,7 +5,7 @@ import Employee from './components/Employee';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [role, setRole] = useState("Dev");
+
   const [employees, setEmployees] = useState(
     [
       {

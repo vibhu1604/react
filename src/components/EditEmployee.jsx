@@ -30,8 +30,6 @@ function EditEmployee(props) {
                         (e) => {
                             handleClose();
                             e.preventDefault();
-                            console.log('hello from edit employee');
-                            console.log(props.id, name, role);
                             props.updateEmployee(props.id, name, role);
                         }
                     } id="editModal" className="w-full max-w-sm">

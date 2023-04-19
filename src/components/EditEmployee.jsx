@@ -28,6 +28,7 @@ function EditEmployee(props) {
                 <Modal.Body>
                     <form onSubmit={
                         (e) => {
+                            handleClose();
                             e.preventDefault();
                             console.log('hello from edit employee');
                             console.log(props.id, name, role);

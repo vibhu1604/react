@@ -42,7 +42,17 @@ function App() {
   );
 
   function updateEmployee(id, newName, newRole) {
-    console.log("I am inside the updateEmployee Function");
+
+    const updatedEmployees = employees.map(
+      (employee) => {
+        if (id == employee.id) {
+          return { ...employee, name: newName, role: newRole }
+        }
+        return employee;
+      }
+    );
+    setEmployees(updatedEmployees);
+
   }
   const showEmployees = true;
   return (

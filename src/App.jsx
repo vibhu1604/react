@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import './index.css';
 import Employee from './components/Employee';
-
+import { v4 as uuidv4 } from 'uuid';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddEmployee from './components/AddEmployee';
+
 
 function App() {
 
@@ -54,33 +56,44 @@ function App() {
     setEmployees(updatedEmployees);
 
   }
+  function newEmployee(name, role, img) {
+    const newEmployee = {
+      id: uuidv4(),
+      name: name,
+      role: role,
+      img: img,
+    }
+    setEmployees([...employees, newEmployee]);
+  }
   const showEmployees = true;
   return (
 
     <div className="App">
       {console.log('We re in show empl')}
       {showEmployees ?
-        <div className='flex flex-wrap justify-center'>
-          {employees.map(
-            (employee) => {
-              return (
-                <Employee
-                  id={employee.id}
-                  key={employee.id}
-                  name={employee.name}
-                  role={employee.role}
-                  img={employee.img}
-                  updateEmployee={updateEmployee}
-                />
-              )
-            }
-          )}
-        </div>
-
+        <>
+          <div className='flex flex-wrap justify-center'>
+            {employees.map(
+              (employee) => {
+                return (
+                  <Employee
+                    id={employee.id}
+                    key={employee.id}
+                    name={employee.name}
+                    role={employee.role}
+                    img={employee.img}
+                    updateEmployee={updateEmployee}
+                  />
+                )
+              }
+            )}
+          </div>
+          <AddEmployee newEmployee={newEmployee} />
+        </>
         :
         <p>You can not see the employees</p>
       }
-    </div>
+    </div >
   );
 }
 
